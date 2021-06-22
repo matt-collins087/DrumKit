@@ -47,10 +47,23 @@ drumButtons.forEach(btn => {
     let buttonInnerHTML = this.innerHTML;
 
     handleKeys(buttonInnerHTML);
+
+    handleAnimation(buttonInnerHTML);
   })
 })
 
 
 document.addEventListener('keypress', function(e) {
   handleKeys(e.key);
+  handleAnimation(e.key);
 })
+
+
+function handleAnimation(key) {
+  let activeButton = document.querySelector(`.${key}`);
+  activeButton.classList.add('pressed');
+
+  setTimeout(() => {
+    activeButton.classList.remove('pressed');
+  }, 100);
+}
